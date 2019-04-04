@@ -28,7 +28,7 @@ const styles = theme => ({
         }),
     },
     appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
+         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.easeOut,
@@ -63,7 +63,7 @@ const styles = theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
-        marginLeft: -drawerWidth,
+         marginLeft: -drawerWidth,
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
@@ -90,7 +90,7 @@ class AppBarComponent extends React.Component {
         const { classes, theme } = this.props;
         const { open } = this.state;
         return (
-            <div style={{ display: 'flex' }}>
+            <div >
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton color="inherit" aria-label="Menu" onClick={() => this.handleDrawerOpen()}>

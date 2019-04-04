@@ -12,8 +12,8 @@ import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 
 let counter = 0;
-function createData(transaction, vehicle, start_time, end_time, username) {
-  return { transaction, vehicle, start_time, end_time, username };
+function createData(transaction, vehicle,duration, start_time, end_time, username) {
+  return { transaction, vehicle,duration, start_time, end_time, username };
 }
 
 function desc(a, b, orderBy) {
@@ -43,6 +43,7 @@ function getSorting(order, orderBy) {
 const rows = [
   { id: 'transaction', numeric: false, disablePadding: true, label: 'Transaction' },
   { id: 'vehicle', numeric: true, disablePadding: false, label: 'Calories' },
+  { id: 'duration', numeric: true, disablePadding: false, label: 'Duration (S)' },
   { id: 'start_time', numeric: true, disablePadding: false, label: 'Start time' },
   { id: 'end_time', numeric: true, disablePadding: false, label: 'End time' },
   { id: 'username', numeric: true, disablePadding: false, label: 'Username' },
@@ -54,7 +55,7 @@ class EnhancedTableHead extends React.Component {
   };
 
   render() {
-    const {  order, orderBy} = this.props;
+    const { order, orderBy } = this.props;
 
     return (
       <TableHead>
@@ -125,21 +126,7 @@ class EnhancedTable extends React.Component {
     order: 'asc',
     orderBy: 'transaction',
     selected: [],
-    data: [
-      createData('Cupcake', 305, 3.7, 67, 4.3),
-      createData('Donut', 452, 25.0, 51, 4.9),
-      createData('Eclair', 262, 16.0, 24, 6.0),
-      createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-      createData('Gingerbread', 356, 16.0, 49, 3.9),
-      createData('Honeycomb', 408, 3.2, 87, 6.5),
-      createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-      createData('Jelly Bean', 375, 0.0, 94, 0.0),
-      createData('KitKat', 518, 26.0, 65, 7.0),
-      createData('Lollipop', 392, 0.2, 98, 0.0),
-      createData('Marshmallow', 318, 0, 81, 2.0),
-      createData('Nougat', 360, 19.0, 9, 37.0),
-      createData('Oreo', 437, 18.0, 63, 4.0),
-    ],
+    data: this.props.data,
     page: 0,
     rowsPerPage: 5,
   };
@@ -164,8 +151,7 @@ class EnhancedTable extends React.Component {
   };
 
   handleClick = (event, id) => {
-    console.log('id',id)
-
+    this.props.handleTableClick(id)
   };
 
   handleChangePage = (event, page) => {
@@ -179,13 +165,11 @@ class EnhancedTable extends React.Component {
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   render() {
-    console.log("in table comp",this.props.data)
-    // const data=this.props.data;
+
     const { classes } = this.props;
-    const {  data,order, orderBy, selected, rowsPerPage, page } = this.state;
+    const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+    // const data = this.props.data;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
-    console.log("in table comp",this.props.data.bookings)
-    console.log("in table data",data)
 
     return (
       <Paper className={classes.root}>
@@ -207,27 +191,19 @@ class EnhancedTable extends React.Component {
                   return (
                     <TableRow
                       hover
-                      onClick={event => this.handleClick(event, n.transaction)}
+                      onClick={event => this.handleClick(event, n)}
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
-                      key={n.transaction}
+                      key={n.id}
                       selected={isSelected}
                     >
-                      {/* <TableCell padding="checkbox">
-                        <Checkbox checked={isSelected} />
-                      </TableCell> */}
-                      <TableCell component="th" scope="row" padding="none">
-                        {n.transaction}
-                      </TableCell>
-                      <TableCell align="right">{n.vehicle}</TableCell>
-                      <TableCell align="right">{n.start_time}</TableCell>
-                      <TableCell align="right">{n.end_time}</TableCell>
-                      <TableCell align="right">{n.username}</TableCell>
-                      {/* <TableCell align="right">{n.car.licence_plate}</TableCell>
-                      <TableCell align="right">{n.book_start}</TableCell>
-                      <TableCell align="right">{n.book_end}</TableCell>
-                      <TableCell align="right">{n.user.name}</TableCell> */}
+                      <TableCell align="right">{n.id}</TableCell>
+                      <TableCell align="right">{n.car.licence_plate}</TableCell>
+                      <TableCell align="right">{(n.book_end-n.book_start)/1000 }</TableCell>
+                      <TableCell align="right">{new Date(n.book_start).toLocaleString()}</TableCell>
+                      <TableCell align="right">{new Date(n.book_end).toLocaleString()}</TableCell>
+                      <TableCell align="right">{n.user.name}</TableCell>
                     </TableRow>
                   );
                 })}

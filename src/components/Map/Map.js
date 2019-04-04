@@ -13,10 +13,8 @@ class Map extends Component {
 
   componentDidMount() {
     const directionsService = new google.maps.DirectionsService();
-
-    const origin = { lat: 40.756795, lng: -73.954298 };
-    const destination = { lat: 41.756795, lng: -78.954298 };
-
+    const origin = { lat: this.props.pickup.lat?this.props.pickup.lat:40.756795, lng: this.props.pickup.lng?this.props.pickup.lng:-73.954298 };
+    const destination = { lat: this.props.dropoff.lat?this.props.dropoff.lat:41.756795, lng: this.props.dropoff.lng?this.props.dropoff.lng:-78.954298 };
     directionsService.route(
       {
         origin: origin,
@@ -25,6 +23,7 @@ class Map extends Component {
       },
       (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
+          console.log('result',result)
           this.setState({
             directions: result
           });

@@ -44,7 +44,7 @@ class Login extends React.Component {
                 {!this.props.authenticated && <div className="App">
                     <div className="App-header">
                         <Paper elevation={1} className="loginPaper">
-                            <h1>SMove Challenge</h1>
+                            <h1>SMOVE CHALLENGE</h1>
 
                             <form noValidate autoComplete="off" style={this.styles.container}>
 

@@ -11,6 +11,9 @@
   font-size: calc(5px + 2vmin);
   color: #000; }
 
+.App-header h1 {
+  font-weight: 200; }
+
 @media (min-width: 480px) {
   .loginPaper {
     width: 400px; } }

@@ -29,7 +29,6 @@ class MainDashboard extends React.Component {
                     <div>
                         <MapLoader
 
-                            // This key should be replaced from my key
                             googleMapURL={"https://maps.googleapis.com/maps/api/js?key=" + process.env.REACT_APP_MAP_API_KEY}
                             loadingElement={<div />}
                             containerElement={<div />}

@@ -23,7 +23,6 @@ class Map extends Component {
       },
       (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
-          console.log('result',result)
           this.setState({
             directions: result
           });

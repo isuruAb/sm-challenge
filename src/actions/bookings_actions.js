@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as bookings from '../const/bookings';
 
 export function getBookings() {
     return dispatch => {
@@ -6,7 +7,7 @@ export function getBookings() {
             .then(function (response) {
                 // handle success
                 dispatch({
-                    type: "GET_BOOKINGS",
+                    type: bookings.GET_BOOKINGS,
                     payload: response.data
                 });
             })

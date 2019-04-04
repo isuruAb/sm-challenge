@@ -1,3 +1,5 @@
+import * as authconst from '../const/auth';
+
 const userInitialState = {
     user: '',
     authenticated: false
@@ -5,7 +7,7 @@ const userInitialState = {
 
 const authReducer = (state = userInitialState, action) => {
     switch (action.type) {
-        case "USER_LOGIN":
+        case authconst.USER_LOGIN:
             state = {
                 ...state,
                 user: action.payload,
@@ -13,13 +15,13 @@ const authReducer = (state = userInitialState, action) => {
 
             }
             break;
-        case "USER_AUTHENTICATION_CHECK":
+        case authconst.USER_AUTHENTICATION_CHECK:
             state = {
                 ...state,
                 authenticated: action.payload
             }
             break
-        case "USER_LOGOUT":
+        case authconst.USER_LOGOUT:
             state = {
                 ...state,
                 user:'',

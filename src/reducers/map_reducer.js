@@ -1,3 +1,5 @@
+import * as map from '../const/map';
+
 const mapInitialState = {
     pickup: {
         lat:1.3156247,
@@ -11,7 +13,7 @@ const mapInitialState = {
 
 const mapReducer = (state = mapInitialState, action) => {
     switch (action.type) {
-        case "CHANGE_MAP_DIRECTION":
+        case map.CHANGE_MAP_DIRECTION:
             state = {
                 ...state,
                 pickup: {

@@ -1,6 +1,7 @@
 import { auth } from '../helpers/firebase'
 import firebase from 'firebase';
 import history from '../helpers/history';
+import * as authconst from '../const/auth';
 export function userLogin() {
     return dispatch => {
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -15,7 +16,7 @@ export function userLogin() {
             console.log("user", user);
             // this.props.dispatch(push('/game/path'));
             dispatch({
-                type: "USER_LOGIN",
+                type: authconst.USER_LOGIN,
                 payload: user
             });
 
@@ -35,12 +36,12 @@ export function isAuthenticated(){
     return dispatch => {
         if(localStorage.getItem('token')){
             dispatch({
-                type: "USER_AUTHENTICATION_CHECK",
+                type: authconst.USER_AUTHENTICATION_CHECK,
                 payload: true
             });
         }else{
             dispatch({
-                type: "USER_AUTHENTICATION_CHECK",
+                type: authconst.USER_AUTHENTICATION_CHECK,
                 payload: false
             });
         }

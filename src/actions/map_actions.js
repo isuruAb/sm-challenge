@@ -1,8 +1,9 @@
+import * as map from '../const/map';
 
 export function changeMapDirection(record) {
     return dispatch => {
                 dispatch({
-                    type: "CHANGE_MAP_DIRECTION",
+                    type: map.CHANGE_MAP_DIRECTION,
                     payload: record
                 });
 

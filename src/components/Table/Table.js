@@ -12,8 +12,8 @@ import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 
 let counter = 0;
-function createData(transaction, vehicle,duration, start_time, end_time, username) {
-  return { transaction, vehicle,duration, start_time, end_time, username };
+function createData(transaction, vehicle, duration, start_time, end_time, username) {
+  return { transaction, vehicle, duration, start_time, end_time, username };
 }
 
 function desc(a, b, orderBy) {
@@ -200,7 +200,7 @@ class EnhancedTable extends React.Component {
                     >
                       <TableCell align="right">{n.id}</TableCell>
                       <TableCell align="right">{n.car.licence_plate}</TableCell>
-                      <TableCell align="right">{(n.book_end-n.book_start)/1000 }</TableCell>
+                      <TableCell align="right">{(n.book_end - n.book_start) / 1000}</TableCell>
                       <TableCell align="right">{new Date(n.book_start).toLocaleString()}</TableCell>
                       <TableCell align="right">{new Date(n.book_end).toLocaleString()}</TableCell>
                       <TableCell align="right">{n.user.name}</TableCell>

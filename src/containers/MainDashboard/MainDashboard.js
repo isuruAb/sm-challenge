@@ -10,8 +10,8 @@ import { bindActionCreators } from 'redux';
 import Loader from '../../components/Loader/Loader';
 
 class MainDashboard extends React.Component {
-    componentDidMount() {
-        this.props.getBookings();
+    async componentDidMount() {
+        await this.props.getBookings();
     }
 
     handleTableClick(record) {
@@ -27,8 +27,9 @@ class MainDashboard extends React.Component {
                 {this.props.bookings.bookings.length > 0 ?
                     <div>
                         <MapLoader
+                       
                             // This key should be replaced from my key
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDurZQBXjtSzKeieXwtFeGe-jhZu-HEGQU"
+                            googleMapURL={"https://maps.googleapis.com/maps/api/js?key="+process.env.REACT_APP_MAP_API_KEY}
                             loadingElement={<div />}
                             containerElement={<div />}
                             mapElement={<div />}

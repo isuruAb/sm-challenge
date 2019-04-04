@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "smove-c721b",
+    "default": "smove-c721b"
+  }
+}

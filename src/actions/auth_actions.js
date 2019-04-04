@@ -1,6 +1,6 @@
 import { auth } from '../helpers/firebase'
 import firebase from 'firebase';
-
+import history from '../helpers/history';
 export function userLogin() {
     return dispatch => {
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -44,5 +44,15 @@ export function isAuthenticated(){
                 payload: false
             });
         }
+    }
+}
+
+export function userLogout(){
+    return dispatch => {
+        localStorage.setItem("token", '');
+            dispatch({
+                type: "USER_LOGOUT",
+            });
+            history.push('/')
     }
 }

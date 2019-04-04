@@ -117,7 +117,7 @@ class AppBarComponent extends React.Component {
                     </div>
                     <Divider />
                     <List>
-                        <ListItem button key="Logout">
+                        <ListItem button key="Logout" onClick={() => this.props.handleLogout()}>
                             <ListItemIcon><InboxIcon /></ListItemIcon>
                             <ListItemText primary='Logout' />
                         </ListItem>

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import MainDashboard from './containers/MainDashboard/MainDashboard';
 import Login from './containers/Login/Login';
 import store from './store';
 import { Provider } from 'react-redux';
+import history from './helpers/history'
 function PrivateRoute ({component: Component, authenticated, ...rest}) {
   return (
     <Route
@@ -20,13 +21,13 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
           <Switch>
             <Route exact path='/' component={Login} />
             <PrivateRoute  exact path='/dashboard' component={MainDashboard} />
 
           </Switch>
-        </BrowserRouter>
+        </Router>
       </Provider>
     );
   }

@@ -3,7 +3,13 @@ import * as bookings from '../const/bookings';
 
 export function getBookings() {
     return dispatch => {
-        axios.get('/bookings')
+        const config = {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            data: {},
+          };
+        axios.get('/bookings',config)
             .then(function (response) {
                 // handle success
                 dispatch({

@@ -15,3 +15,6 @@ REACT_APP_FIREBASE_API_KEY=PASTE_YOUR_FIREBASE_API_KEY_HERE
 - Install dependencies `npm i`
 - run on development mode `npm start`
 
+## DEMO
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/7692626/55671158-7e271880-58bf-11e9-9448-6fece2cd5598.gif)
